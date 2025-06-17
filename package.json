@@ -1,0 +1,15 @@
+{
+  "name": "sotsugyo-seisaku",
+  "version": "1.0.0",
+  "description": "音楽を聴きながら創作に没頭できる、小説執筆エディターです。",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  }
+} 

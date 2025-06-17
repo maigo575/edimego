@@ -1,0 +1,1 @@
+docker compose -p monogatari-station exec web rails db:create db:migrate
