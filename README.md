@@ -56,3 +56,18 @@ Railsなら、ユーザー登録・作品管理・エディタ機能などを一
 - コラボ執筆機能（ActionCableでリアルタイム共同編集）
 - AIによる構成提案や誤字脱字チェック（OpenAI API）
 - プレイリスト作成と保存（ユーザー単位で管理）
+
+## 技術スタック
+### バックエンド
+- Ruby on Rails 7.1
+- PostgreSQL
+- Docker
+
+### フロントエンド
+- Turbo
+- Stimulus
+- Tailwind CSS
+
+### インフラ
+- GitHub Actions（CI/CD）
+- Heroku（本番環境）
