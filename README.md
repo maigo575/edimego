@@ -55,6 +55,28 @@
 - AIによる構成提案や誤字脱字チェック（OpenAI API）
 - プレイリスト作成と保存（ユーザー単位で管理）
 
+## 機能の実装方針予定
+本サービスはRuby on Railsを使用して開発します。
+
+### 技術スタック（予定）
+- **フレームワーク**: Ruby on Rails（バージョン 7.x系）
+- **言語**: Ruby 3.2系
+- **データベース**: PostgreSQL
+- **フロントエンド**: Turbo, Stimulus, JavaScript, HTML/CSS
+- **認証・認可**: Devise, Omniauth
+- **デプロイサーバー**: Render または Heroku
+- **CI/CD**: GitHub Actions
+- **その他使用予定Gem**:
+    - Kaminari（ページネーション）
+    - RSpec（テスト）
+    - FactoryBot（テストデータ）
+    - RuboCop（静的解析）
+    - dotenv-rails（環境変数管理）
+    - ActiveStorage（画像アップロード）
+    - その他必要に応じて追加
+
+今後、要件や開発状況に応じて技術スタックやGemは適宜見直します。
+
 ## 開発環境のセットアップ
 1. リポジトリのクローン
 ```bash
