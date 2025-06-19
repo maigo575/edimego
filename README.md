@@ -54,3 +54,44 @@
 - コラボ執筆機能（ActionCableでリアルタイム共同編集）
 - AIによる構成提案や誤字脱字チェック（OpenAI API）
 - プレイリスト作成と保存（ユーザー単位で管理）
+
+## 開発環境のセットアップ
+1. リポジトリのクローン
+```bash
+git clone https://github.com/maigo575/edimego.git
+cd edimego
+```
+
+2. 環境変数の設定
+```bash
+cp .env.example .env
+```
+
+3. Dockerコンテナの起動
+```bash
+docker-compose up -d
+```
+
+4. データベースのセットアップ
+```bash
+docker-compose exec web rails db:create db:migrate
+```
+
+5. アプリケーションの起動
+```bash
+docker-compose exec web rails server -b '0.0.0.0'
+```
+
+## テストの実行
+```bash
+docker-compose exec web rails test
+```
+
+## デプロイ
+```bash
+kamal setup
+kamal deploy
+```
+
+## ライセンス
+MIT License
