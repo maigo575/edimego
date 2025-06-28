@@ -78,7 +78,7 @@
 今後、要件や開発状況に応じて技術スタックやGemは適宜見直します。
 
 画面遷移図
-https://www.figma.com/board/v4gZFkpuKrby5rZ4gY23VH/%E7%84%A1%E9%A1%8C?node-id=0-1&t=2imCfcLjn2DhtPe7-1
+https://www.figma.com/board/v4gZFkpuKrby5rZ4gY23VH/%E7%84%A1%E9%A1%8C?node-id=0-1&t=d1h1lQdpqAUuEqLC-1
 
 ## 開発環境のセットアップ
 1. リポジトリのクローン
