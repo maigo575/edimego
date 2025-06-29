@@ -4,7 +4,12 @@ erDiagram
       int id PK
       string name
       string email
-      string password_digest
+      string encrypted_password
+      string reset_password_token
+      datetime reset_password_sent_at
+      string unconfirmed_email
+      string confirmation_token
+      datetime confirmation_sent_at
       datetime created_at
       datetime updated_at
     }
@@ -13,27 +18,10 @@ erDiagram
       int user_id FK
       string title
       text body
-      string status
+      string status  "draft/published などのenum値を想定"
       datetime created_at
       datetime updated_at
     }
-    PASSWORD_RESETS {
-      int id PK
-      int user_id FK
-      string token
-      datetime sent_at
-      datetime created_at
-    }
-    EMAIL_CHANGES {
-      int id PK
-      int user_id FK
-      string new_email
-      string token
-      datetime sent_at
-      datetime created_at
-    }
 
     USERS ||--o{ WORKS : "1人が複数作品"
-    USERS ||--o{ PASSWORD_RESETS : "1人が複数リセット"
-    USERS ||--o{ EMAIL_CHANGES : "1人が複数申請"
 ``` 
