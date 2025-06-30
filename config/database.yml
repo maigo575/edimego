@@ -18,3 +18,9 @@ test:
 production:
   <<: *default
   database: sotsugyo_seisaku_production
+  url: <%= ENV['DATABASE_URL'] %>
+
+  # 追加：cache用の設定
+  cache:
+    <<: *default
+    url: <%= ENV['DATABASE_URL'] %>
