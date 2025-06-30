@@ -2,7 +2,7 @@ default: &default
   adapter: postgresql
   encoding: unicode
   host: db
-  pool: 5
+  pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   username: postgres
   password: password
   port: 5432
@@ -17,10 +17,7 @@ test:
 
 production:
   <<: *default
-  database: sotsugyo_seisaku_production
   url: <%= ENV['DATABASE_URL'] %>
-
-  # 追加：cache用の設定
   cache:
     <<: *default
     url: <%= ENV['DATABASE_URL'] %>
