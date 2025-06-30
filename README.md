@@ -120,3 +120,36 @@ kamal deploy
 
 ## ライセンス
 MIT License
+
+## 開発環境セットアップ手順（Docker利用）
+
+1. リポジトリをクローン
+   ```
+   git clone <YOUR_REPO_URL>
+   cd <YOUR_REPO_NAME>
+   ```
+
+2. Dockerイメージのビルド＆起動
+   ```
+   docker-compose build
+   docker-compose up
+   ```
+
+3. 別ターミナルでDB作成＆マイグレーション
+   ```
+   docker-compose run web rails db:create db:migrate
+   ```
+
+4. ブラウザで http://localhost:3000 にアクセス
+
+---
+
+## Devise導入（初回のみ）
+
+1. Gemfileに`devise`を追加し、`bundle install`
+2. `docker-compose run web rails generate devise:install`
+3. `docker-compose run web rails generate devise User`
+4. 必要に応じてUserモデルにカラム追加・マイグレーション
+5. `docker-compose run web rails db:migrate`
+
+---
