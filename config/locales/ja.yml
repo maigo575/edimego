@@ -1,0 +1,6 @@
+ja:
+  hello: "こんにちは"
+  application_name: "ながら書き"
+  notice:
+    success: "操作が成功しました"
+    error: "エラーが発生しました" 

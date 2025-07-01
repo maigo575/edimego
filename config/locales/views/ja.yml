@@ -1,0 +1,12 @@
+ja:
+  views:
+    welcome: ようこそ
+    login: ログイン
+    logout: ログアウト
+    signup: 新規登録
+    forgot_password: パスワードを忘れた方
+    reset_password: パスワードをリセット
+    edit_password: パスワードを変更
+    edit_profile: プロフィールを編集
+    edit_email: メールアドレスを編集
+    edit_email_confirmation: メールアドレスを確認
