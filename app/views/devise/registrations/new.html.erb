@@ -1,0 +1,30 @@
+<div class="register-container">
+  <h2>新規登録</h2>
+  <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
+
+    <div class="form-group">
+      <%= f.label :penname, "ペンネーム" %>
+      <%= f.text_field :penname, placeholder: "例：ながら太郎", required: true, autofocus: true %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :email, "メールアドレス" %>
+      <%= f.email_field :email, placeholder: "例：example@mail.com", required: true %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password, "パスワード" %>
+      <%= f.password_field :password, placeholder: "8文字以上", required: true %>
+    </div>
+
+    <div class="form-group">
+      <%= f.label :password_confirmation, "パスワード（確認）" %>
+      <%= f.password_field :password_confirmation, placeholder: "もう一度入力", required: true %>
+    </div>
+
+    <div class="form-actions">
+      <%= f.submit "登録してログイン" %>
+    </div>
+  <% end %>
+</div>

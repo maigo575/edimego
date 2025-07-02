@@ -3,4 +3,7 @@ ja:
   application_name: "ながら書き"
   notice:
     success: "操作が成功しました"
-    error: "エラーが発生しました" 
+    error: "エラーが発生しました"
+  errors:
+    messages:
+      too_short: "は%{count}文字以上で入力してください" 
