@@ -91,28 +91,37 @@ body {
 }
 .header-bar {
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  justify-content: center;
   background: #e0e0e0;
   border-bottom: 1px solid #888;
   padding: 16px 32px;
   margin-bottom: 32px;
+  position: relative;
 }
 .header-title {
-  font-size: 2em;
-  font-weight: bold;
-  letter-spacing: 0.1em;
+  flex: none;
+  text-align: center;
+  z-index: 1;
 }
 .header-title-link,
 .header-title-link:visited,
 .header-title-link:active,
 .header-title-link:hover {
+  font-size: 2em;
+  font-weight: bold;
+  letter-spacing: 0.1em;
   color: #222;
   text-decoration: none;
 }
 .header-actions {
+  position: absolute;
+  right: 32px;
+  top: 50%;
+  transform: translateY(-50%);
   display: flex;
   gap: 8px;
+  z-index: 2;
 }
 .header-btn {
   padding: 6px 16px;
