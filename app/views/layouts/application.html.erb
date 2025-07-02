@@ -28,10 +28,17 @@
         <%= link_to "ながら書き", root_path, class: "header-title-link" %>
       </div>
       <div class="header-actions">
-        <%= link_to "ログイン", new_user_session_path, class: "header-btn" %>
-        <%= link_to "新規登録", new_user_registration_path, class: "header-btn" %>
+        <% if user_signed_in? %>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { turbo: false }, class: "header-btn" %>
+        <% else %>
+          <%= link_to "ログイン", new_user_session_path, class: "header-btn" %>
+          <%= link_to "新規登録", new_user_registration_path, class: "header-btn" %>
+        <% end %>
       </div>
     </div>
+    <% flash.each do |key, value| %>
+      <div class="flash-message <%= key %>"><%= value %></div>
+    <% end %>
     <%= yield %>
   </body>
 </html>

@@ -230,3 +230,22 @@ body {
   text-decoration: underline;
   color: #0d47a1;
 }
+.flash-message {
+  text-align: center;
+  margin: 20px auto;
+  padding: 12px 24px;
+  border-radius: 6px;
+  font-size: 1.1em;
+  width: 90%;
+  max-width: 500px;
+}
+.flash-message.notice {
+  background: #e3fcec;
+  color: #256029;
+  border: 1px solid #b7ebc6;
+}
+.flash-message.alert, .flash-message.error {
+  background: #ffeaea;
+  color: #c00;
+  border: 1px solid #f5c2c7;
+}
