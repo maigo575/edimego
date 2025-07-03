@@ -26,7 +26,28 @@
       <span id="copy-message" style="color: #228b22; font-weight: bold; display: none; margin-left: 10px;"></span>
     </div>
   </div>
-  <div style="flex: 1;"></div>
+  <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between; gap: 24px;">
+    <!-- YouTubeプレイヤー関連（右下） -->
+    <div style="display: flex; flex-direction: column; gap: 12px;">
+      <!-- YouTubeプレイヤー（16:9比率維持） -->
+      <div style="position: relative; width: 100%; padding-top: 56.25%; background: #222;">
+        <iframe id="youtube-player" style="position: absolute; top: 0; left: 0; width: 100%; height: 100%;" src="" frameborder="0" allowfullscreen></iframe>
+      </div>
+      <!-- YouTube検索窓（プレイヤーの下） -->
+      <div style="margin-top: 8px;">
+        <label style="font-weight: bold;">YouTube動画検索</label><br>
+        <input type="text" id="youtube-search-query" style="width: 70%; padding: 4px 8px; font-size: 1rem;" placeholder="キーワードを入力">
+        <button type="button" id="youtube-search-btn" style="margin-left: 8px; padding: 4px 12px;">検索</button>
+        <div id="youtube-search-results" style="margin-top: 8px;"></div>
+      </div>
+      <!-- YouTube動画ID/URL入力欄（検索窓の下に移動） -->
+      <div style="margin-top: 8px;">
+        <label style="font-weight: bold;">YouTube動画IDまたはURL</label><br>
+        <input type="text" id="youtube-input" style="width: 80%; padding: 4px 8px; font-size: 1rem;" placeholder="YouTube動画IDまたはURL">
+        <button type="button" id="youtube-play-btn" style="margin-left: 8px; padding: 4px 12px;">動画を再生</button>
+      </div>
+    </div>
+  </div>
 </div>
 
 <script>
