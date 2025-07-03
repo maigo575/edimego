@@ -86,4 +86,22 @@ Rails.application.configure do
   #
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+# 本番ドメイン許可
+config.hosts << "xn--v8jc9fuf1610a.com"
+config.hosts << "www.xn--v8jc9fuf1610a.com"
+
+# メール送信設定（必要なら）
+# config.action_mailer.default_url_options = { host: "xn--v8jc9fuf1610a.com", protocol: "https" }
+# config.action_mailer.delivery_method = :smtp
+# config.action_mailer.smtp_settings = {
+#   address: "smtp.gmail.com",
+#   port: 587,
+#   user_name: ENV["GMAIL_USERNAME"],
+#   password: ENV["GMAIL_PASSWORD"],
+#   authentication: :plain,
+#   enable_starttls_auto: true
+# }
+
+# ストレージ設定（必要なら）
+# config.active_storage.service = :amazon
 end
