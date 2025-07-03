@@ -7,3 +7,9 @@
   </p>
   <%= link_to '新規登録', new_user_registration_path, class: 'btn', style: 'margin-top: 24px;' %>
 </div>
+
+<% if user_signed_in? %>
+  <div style="margin: 32px 0; text-align: center;">
+    <%= link_to '作品一覧', works_path, style: 'border: 2px solid #222; border-radius: 6px; padding: 12px 32px; font-size: 1.2rem; font-weight: bold; background: #fff; color: #222; text-decoration: none;' %>
+  </div>
+<% end %>

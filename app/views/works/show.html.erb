@@ -1,0 +1,49 @@
+<div style="background: #ddd; padding: 32px; min-height: 500px;">
+  <div style="display: flex; justify-content: flex-start; align-items: center; margin-bottom: 18px; gap: 16px;">
+    <%= link_to '作品一覧', works_path, style: 'border: 2px solid #222; border-radius: 6px; padding: 6px 18px; font-size: 1rem; font-weight: bold; background: #fff; color: #222; text-decoration: none;' %>
+  </div>
+  <div style="display: flex; justify-content: space-between; align-items: flex-end; margin-bottom: 18px;">
+    <div>
+      <span style="font-size: 1.3rem; font-weight: bold; color: #222;"> <%= @work.title.presence || '無題' %> </span>
+      <span style="font-size: 1rem; color: #555; margin-left: 12px;">（<%= @work.updated_at.strftime('%y/%m/%d') %>）</span>
+    </div>
+    <div style="display: flex; gap: 12px;">
+      <%= link_to '編集', edit_work_path(@work), style: 'font-size: 1rem; color: #222; background: none; border: none; text-decoration: underline; cursor: pointer; padding: 0 8px;' %>
+      <%= button_to '削除', work_path(@work), method: :delete, data: { confirm: '本当に削除しますか？' }, form: { style: 'display: inline;' }, style: 'font-size: 1rem; color: #b00; background: none; border: none; text-decoration: underline; cursor: pointer; padding: 0 8px;' %>
+    </div>
+  </div>
+  <div style="font-size: 14px; font-family: '游明朝', 'Yu Mincho', 'ヒラギノ明朝 ProN W3', 'Hiragino Mincho ProN', 'MS P明朝', 'MS Mincho', serif; background: #eee; padding: 18px; border-radius: 6px; color: #222; min-height: 300px; white-space: pre-wrap;" id="work-body-text">
+    <%= @work.body %>
+  </div>
+  <div style="margin-top: 18px; display: flex; align-items: center; gap: 12px;">
+    <button type="button" id="copy-btn" style="border: 2px solid #aaa; border-radius: 6px; padding: 6px 18px; font-size: 1rem; background: #f8f8f8; color: #555;">本文をコピー</button>
+    <span id="copy-message" style="color: #228b22; font-weight: bold; display: none; margin-left: 10px;"></span>
+  </div>
+</div>
+<script>
+  function handleCopyClickShow(e) {
+    e.preventDefault();
+    const bodyDiv = document.getElementById('work-body-text');
+    if (!bodyDiv) return;
+    const text = bodyDiv.innerText;
+    navigator.clipboard.writeText(text).then(function() {
+      const msg = document.getElementById('copy-message');
+      msg.textContent = 'コピーしました！';
+      msg.style.display = 'inline';
+      setTimeout(() => { msg.style.display = 'none'; }, 2000);
+    }, function() {
+      const msg = document.getElementById('copy-message');
+      msg.textContent = 'コピーに失敗しました';
+      msg.style.display = 'inline';
+      setTimeout(() => { msg.style.display = 'none'; }, 2000);
+    });
+  }
+  document.addEventListener('turbo:load', function() {
+    const copyBtn = document.getElementById('copy-btn');
+    if (copyBtn) copyBtn.addEventListener('click', handleCopyClickShow);
+  });
+  document.addEventListener('turbo:before-cache', function() {
+    const copyBtn = document.getElementById('copy-btn');
+    if (copyBtn) copyBtn.removeEventListener('click', handleCopyClickShow);
+  });
+</script>

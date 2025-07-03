@@ -1,0 +1,20 @@
+<div style="background: #ddd; padding: 16px 32px 32px 32px; min-height: 500px;">
+  <div style="display: flex; align-items: flex-start; justify-content: space-between; margin-bottom: 8px;">
+    <span style='font-size: 0.95rem; font-weight: bold; color: #222; display: inline-block;'>作品一覧</span>
+    <%= link_to '新規執筆', new_work_path, style: 'border: 2px solid #222; border-radius: 6px; padding: 4px 16px; font-size: 0.95rem; font-weight: bold; background: #fff; color: #222; text-decoration: none; transition: background 0.2s; width: 100px; text-align: center;' %>
+  </div>
+
+  <div style="margin-top: 8px;">
+    <% @works.each do |work| %>
+      <div style="margin-bottom: 24px;">
+        <%= link_to work_path(work), style: 'color: #20b2aa; font-size: 1.2em; text-decoration: none; display: flex; align-items: center;' do %>
+          <span style="margin-right: 16px;">
+            <%= work.title.presence || '無題' %>
+            （<%= work.updated_at.strftime('%y/%m/%d %H:%M:%S') %>更新）
+          </span>
+          <span><%= work.body&.length || 0 %>文字</span>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

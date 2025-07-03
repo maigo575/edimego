@@ -153,3 +153,56 @@ MIT License
 5. `docker-compose run web rails db:migrate`
 
 ---
+
+## 作品編集API（PATCH/PUT /works/:id）
+
+### エンドポイント
+- PATCH /works/:id
+- Content-Type: application/json
+- 認証: ログイン済みセッション（Cookie）
+
+### リクエスト例（JavaScript/fetch）
+```js
+fetch('/works/1', {
+  method: 'PATCH',
+  headers: {
+    'Content-Type': 'application/json',
+    'X-CSRF-Token': document.querySelector('meta[name="csrf-token"]').content
+  },
+  body: JSON.stringify({ work: { title: "新しいタイトル", body: "本文" } })
+})
+.then(res => res.json())
+.then(data => console.log(data));
+```
+
+### レスポンス例
+#### 成功時
+```json
+{
+  "status": "ok",
+  "work": {
+    "id": 1,
+    "title": "新しいタイトル",
+    "body": "本文",
+    ...
+  }
+}
+```
+
+#### バリデーションエラー時
+```json
+{
+  "status": "error",
+  "errors": ["タイトルを入力してください", "本文は1000文字以内で入力してください"]
+}
+```
+
+### バリデーション
+- タイトル: 必須
+- 本文: 任意（または最大文字数制限など、モデルに準拠）
+
+### 認証・権限
+- ログイン済みユーザーのみ利用可能
+- 自分の作品のみ編集可能（他人の作品は404/権限エラー）
+
+---

@@ -27,9 +27,10 @@
       <div class="header-title">
         <%= link_to "ながら書き", root_path, class: "header-title-link" %>
       </div>
-      <div class="header-actions">
+      <div class="header-actions" style="display: flex; flex-direction: column; align-items: flex-end; gap: 6px;">
         <% if user_signed_in? %>
-          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { turbo: false }, class: "header-btn" %>
+          <%= link_to "マイページ", '#', class: "header-btn", style: 'font-size: 0.95rem; padding: 4px 16px; border: 2px solid #222; border-radius: 6px; background: #fff; color: #222; font-weight: bold; text-decoration: none; width: 100px; text-align: center;' %>
+          <%= link_to "ログアウト", destroy_user_session_path, method: :delete, data: { turbo: false }, class: "header-btn", style: 'font-size: 0.95rem; padding: 4px 16px; border: 2px solid #222; border-radius: 6px; background: #fff; color: #222; font-weight: bold; text-decoration: none; width: 100px; text-align: center;' %>
         <% else %>
           <%= link_to "ログイン", new_user_session_path, class: "header-btn" %>
           <%= link_to "新規登録", new_user_registration_path, class: "header-btn" %>
