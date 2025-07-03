@@ -269,3 +269,56 @@ body {
     box-sizing: border-box;
   }
 }
+
+.works-main-container {
+  background: #ddd;
+  padding: 24px;
+  min-height: 600px;
+  display: flex;
+  flex-direction: row;
+  gap: 32px;
+}
+.works-main-left {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+}
+.works-main-right {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 24px;
+}
+@media (max-width: 800px) {
+  .works-main-container {
+    flex-direction: column;
+    gap: 20px;
+    padding: 12px;
+  }
+  .works-main-left, .works-main-right {
+    width: 100%;
+    max-width: 100%;
+  }
+  .works-main-right {
+    order: 2;
+  }
+  .works-main-left {
+    order: 1;
+  }
+  #work_body {
+    min-height: 180px !important;
+    font-size: 1em !important;
+    width: 100% !important;
+    box-sizing: border-box;
+  }
+  #youtube-player {
+    min-height: 180px;
+    height: 180px !important;
+    width: 100% !important;
+  }
+  #youtube-input {
+    width: 95% !important;
+    font-size: 1em !important;
+  }
+}

@@ -1,5 +1,5 @@
-<div style="background: #ddd; padding: 24px; min-height: 600px; display: flex; flex-direction: row; gap: 32px;">
-  <div style="flex: 2; display: flex; flex-direction: column;">
+<div class="works-main-container">
+  <div class="works-main-left">
     <%= form_with(model: @work, local: true) do |f| %>
       <div style="margin-bottom: 16px;">
         <label style="font-weight: bold; font-size: 1rem;">タイトル</label><br>
@@ -26,7 +26,7 @@
       <span id="copy-message" style="color: #228b22; font-weight: bold; display: none; margin-left: 10px;"></span>
     </div>
   </div>
-  <div style="flex: 1; display: flex; flex-direction: column; justify-content: space-between; gap: 24px;">
+  <div class="works-main-right">
     <!-- YouTubeプレイヤー関連（右下） -->
     <div style="display: flex; flex-direction: column; gap: 12px;">
       <!-- YouTubeプレイヤー（16:9比率維持） -->
