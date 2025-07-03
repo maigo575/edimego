@@ -106,48 +106,6 @@ document.addEventListener('turbo:load', function() {
     });
   }
 
-  // YouTube API連携による動画検索
-  const searchBtn = document.getElementById('youtube-search-btn');
-  if (searchBtn) {
-    searchBtn.addEventListener('click', function() {
-      const query = document.getElementById('youtube-search-query').value.trim();
-      const resultsDiv = document.getElementById('youtube-search-results');
-      resultsDiv.innerHTML = '';
-      if (!query) return;
-      // YouTube Data API v3で検索
-      const apiKey = 'AIzaSyBPA288uB7fMxoRlqzLNdFqQ1h-7hUnFb4';
-      const maxResults = 5;
-      const url = `https://www.googleapis.com/youtube/v3/search?part=snippet&type=video&q=${encodeURIComponent(query)}&maxResults=${maxResults}&key=${apiKey}`;
-      fetch(url)
-        .then(res => res.json())
-        .then(data => {
-          if (!data.items) {
-            resultsDiv.innerHTML = '<span style="color:red;">検索結果がありません</span>';
-            return;
-          }
-          data.items.forEach(function(item) {
-            const videoId = item.id.videoId;
-            const title = item.snippet.title;
-            const thumb = item.snippet.thumbnails.default.url;
-            const el = document.createElement('div');
-            el.style.display = 'flex';
-            el.style.alignItems = 'center';
-            el.style.cursor = 'pointer';
-            el.style.marginBottom = '6px';
-            el.innerHTML = `<img src="${thumb}" style="width: 60px; height: 45px; margin-right: 8px;"> <span>${title}</span>`;
-            el.addEventListener('click', function() {
-              const player = document.getElementById('youtube-player');
-              if (player) player.src = `https://www.youtube.com/embed/${videoId}`;
-            });
-            resultsDiv.appendChild(el);
-          });
-        })
-        .catch(err => {
-          resultsDiv.innerHTML = '<span style="color:red;">検索に失敗しました</span>';
-        });
-    });
-  }
-
   // ページ遷移時にiframeをリセット
   document.addEventListener('turbo:before-cache', function() {
     const player = document.getElementById('youtube-player');
