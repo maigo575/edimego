@@ -1,0 +1,39 @@
+<h2 style="text-align: center; margin-top: 32px;">プロフィール編集</h2>
+
+<%= form_with model: @user, url: update_profile_path, method: :patch, local: true do |f| %>
+  <div style="max-width: 400px; margin: 32px auto; display: flex; flex-direction: column; gap: 24px;">
+    <% if @user.errors.any? %>
+      <div style="color: #c00; font-weight: bold;">
+        <ul>
+          <% @user.errors.full_messages.each do |msg| %>
+            <li><%= msg %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div>
+      <label for="user_penname" style="font-weight: bold;">ペンネーム</label><br>
+      <%= f.text_field :penname, required: true, style: 'width: 100%; padding: 8px; font-size: 1.1rem; border-radius: 6px; border: 1px solid #ccc;' %>
+    </div>
+
+    <div>
+      <label for="user_email" style="font-weight: bold;">メールアドレス</label><br>
+      <%= f.email_field :email, required: true, style: 'width: 100%; padding: 8px; font-size: 1.1rem; border-radius: 6px; border: 1px solid #ccc;' %>
+    </div>
+
+    <div style="text-align: center;">
+      <%= f.submit '更新する', style: 'padding: 10px 32px; font-size: 1.1rem; border-radius: 8px; border: none; background: #222; color: #fff; font-weight: bold; cursor: pointer;' %>
+    </div>
+  </div>
+<% end %>
+
+<div style="max-width: 400px; margin: 0 auto 40px auto; text-align: center;">
+  <%= link_to 'パスワード変更', edit_user_registration_path, class: 'profile-btn', style: 'display: inline-block; margin-top: 32px; padding: 10px 32px; font-size: 1.1rem; border-radius: 8px; border: 2px solid #222; background: #fff; color: #222; font-weight: bold; text-decoration: none; transition: background 0.2s;' %>
+</div>
+
+<style>
+  .profile-btn:hover {
+    background: #f0f0f0;
+  }
+</style> 

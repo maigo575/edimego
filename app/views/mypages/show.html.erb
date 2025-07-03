@@ -1,0 +1,29 @@
+<div style="display: flex; flex-direction: column; align-items: center; margin-top: 40px;">
+  <!-- ペンネーム -->
+  <div style="font-size: 2rem; font-weight: bold; margin-bottom: 40px;">
+    <%= @user.penname.presence || 'ペンネーム未設定' %>
+  </div>
+
+  <!-- 作品一覧ボタン -->
+  <%= link_to '作品一覧', works_path, class: 'mypage-btn', style: 'font-size: 1.5rem; margin-bottom: 16px; text-decoration: none; color: #222; font-weight: bold;' %>
+
+  <!-- プロフィール変更ボタン -->
+  <%= link_to 'プロフィール変更', edit_profile_path, class: 'mypage-btn', style: 'font-size: 1.5rem; margin-bottom: 32px; text-decoration: none; color: #222; font-weight: bold;' %>
+</div>
+
+<style>
+  .mypage-btn {
+    display: block;
+    width: 260px;
+    padding: 12px 0;
+    border: none;
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+    text-align: center;
+    transition: background 0.2s;
+  }
+  .mypage-btn:hover {
+    background: #f0f0f0;
+  }
+</style> 

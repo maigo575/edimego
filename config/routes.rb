@@ -17,4 +17,7 @@ Rails.application.routes.draw do
   # Defines the root path route ("/")
   root to: 'pages#home'
   resources :works
+  get 'mypage', to: 'mypages#show', as: :mypage
+  get 'profile/edit', to: 'profiles#edit', as: :edit_profile
+  patch 'profile', to: 'profiles#update', as: :update_profile
 end
