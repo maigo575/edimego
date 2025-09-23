@@ -1,16 +1,20 @@
-<h2>Forgot your password?</h2>
+<div class="login-container">
+  <h2 style="text-align: center;">パスワード再設定</h2>
 
-<%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
-  <%= render "devise/shared/error_messages", resource: resource %>
+  <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
+    <%= render "devise/shared/error_messages", resource: resource %>
 
-  <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <div class="field" style="text-align: center;">
+      <%= f.label :email, 'メールアドレス', style: 'display:block; text-align:center; font-weight:bold;' %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", placeholder: "例：example@mail.com", style: 'margin-top:6px; text-align:center; width: 80%; max-width: 360px; padding: 10px 8px; border: 1px solid #ccc; border-radius: 6px;' %>
+    </div>
+
+    <div class="actions" style="text-align: center; margin-top: 16px;">
+      <%= f.submit "再設定メールを送信", style: 'padding: 10px 28px; font-size: 1.1rem; border-radius: 8px; border: 1px solid #222; background: #222; color: #fff; font-weight: bold; cursor: pointer;' %>
+    </div>
+  <% end %>
+
+  <div style="text-align:center; margin-top: 16px;">
+    <%= link_to 'ログインに戻る', new_user_session_path, style: 'font-size: 1.1rem; font-weight: bold; text-decoration: none; color: #222;' %>
   </div>
-
-  <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
-  </div>
-<% end %>
-
-<%= render "devise/shared/links" %>
+</div>
