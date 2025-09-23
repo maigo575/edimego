@@ -4,7 +4,20 @@ Rails.start();
 import "@hotwired/turbo-rails"
 import "controllers"
 
+function setupFlashAutoHide() {
+  const flashes = document.querySelectorAll('.flash-message');
+  flashes.forEach((el) => {
+    if (el.dataset.autoHideAttached === 'true') return;
+    el.dataset.autoHideAttached = 'true';
+    setTimeout(() => {
+      el.classList.add('is-hiding');
+      setTimeout(() => el.remove(), 400);
+    }, 4000);
+  });
+}
+
 document.addEventListener('DOMContentLoaded', function() {
+  setupFlashAutoHide();
   const form = document.getElementById('register-form');
   const penname = document.getElementById('penname');
   const email = document.getElementById('email');
@@ -67,6 +80,10 @@ document.addEventListener('DOMContentLoaded', function() {
       }
     });
   }
+});
+
+document.addEventListener('turbo:load', function() {
+  setupFlashAutoHide();
 });
 
 // --- YouTubeプレイヤー・検索窓用JS ---

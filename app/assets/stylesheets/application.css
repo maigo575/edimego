@@ -238,6 +238,7 @@ body {
   font-size: 1.1em;
   width: 90%;
   max-width: 500px;
+  transition: opacity 300ms ease, transform 300ms ease;
 }
 .flash-message.notice {
   background: #e3fcec;
@@ -248,6 +249,11 @@ body {
   background: #ffeaea;
   color: #c00;
   border: 1px solid #f5c2c7;
+}
+
+.flash-message.is-hiding {
+  opacity: 0;
+  transform: translateY(-6px);
 }
 
 @media (max-width: 600px) {
