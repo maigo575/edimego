@@ -57,16 +57,21 @@ Rails.application.configure do
   # config.action_mailer.raise_delivery_errors = false
 
   # Set host to be used by links generated in mailer templates.
-  config.action_mailer.default_url_options = { host: "example.com" }
+  config.action_mailer.default_url_options = { host: "xn--v8jc9fuf1610a.com", protocol: "https" }
+  # If you serve assets from the same host, also set asset_host (optional)
+  # config.action_mailer.asset_host = "https://xn--v8jc9fuf1610a.com"
 
-  # Specify outgoing SMTP server. Remember to add smtp/* credentials via rails credentials:edit.
-  # config.action_mailer.smtp_settings = {
-  #   user_name: Rails.application.credentials.dig(:smtp, :user_name),
-  #   password: Rails.application.credentials.dig(:smtp, :password),
-  #   address: "smtp.example.com",
-  #   port: 587,
-  #   authentication: :plain
-  # }
+  # Outgoing SMTP server via ENV on Render (e.g. SendGrid/Mailgun).
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.smtp_settings = {
+    address:              ENV.fetch("SMTP_ADDRESS", "smtp.sendgrid.net"),
+    port:                 ENV.fetch("SMTP_PORT", 587).to_i,
+    user_name:            ENV["SMTP_USERNAME"],
+    password:             ENV["SMTP_PASSWORD"],
+    domain:               ENV.fetch("SMTP_DOMAIN", "xn--v8jc9fuf1610a.com"),
+    authentication:       :plain,
+    enable_starttls_auto: true
+  }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
