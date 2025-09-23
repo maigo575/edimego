@@ -20,6 +20,12 @@
     <div>
       <label for="user_email" style="font-weight: bold;">メールアドレス</label><br>
       <%= f.email_field :email, required: true, style: 'width: 100%; padding: 8px; font-size: 1.1rem; border-radius: 6px; border: 1px solid #ccc;' %>
+      <% if @user.respond_to?(:unconfirmed_email) && @user.unconfirmed_email.present? %>
+        <div style="margin-top: 6px; color: #666; font-size: 0.95rem;">
+          確認待ちの新しいメールアドレス: <strong><%= @user.unconfirmed_email %></strong><br>
+          メール内のリンクから変更を確定してください。
+        </div>
+      <% end %>
     </div>
 
     <div style="text-align: center;">
