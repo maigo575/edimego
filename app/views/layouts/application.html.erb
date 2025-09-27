@@ -11,17 +11,24 @@
     <%= yield :head %>
 
     <%# Google Analytics 4 %>
-    <% if ENV['GA4_MEASUREMENT_ID'].present? || Rails.env.production? %>
+    <% if Rails.env.production? %>
       <!-- Google tag (gtag.js) -->
       <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q3K71C4CTD"></script>
-      <script nonce="<%= content_security_policy_nonce %>">
+      <script>
         window.dataLayer = window.dataLayer || [];
         function gtag(){dataLayer.push(arguments);}
         gtag('js', new Date());
         gtag('config', 'G-Q3K71C4CTD');
-        <% if Rails.env.development? %>
+      </script>
+    <% elsif ENV['GA4_MEASUREMENT_ID'].present? %>
+      <!-- Google tag (gtag.js) - Development -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q3K71C4CTD"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-Q3K71C4CTD');
         console.log('Google Analytics loaded in development mode with ID: G-Q3K71C4CTD');
-        <% end %>
       </script>
     <% end %>
 
