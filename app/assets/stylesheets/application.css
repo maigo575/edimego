@@ -120,7 +120,9 @@ body {
   top: 50%;
   transform: translateY(-50%);
   display: flex;
-  gap: 8px;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 6px;
   z-index: 2;
 }
 .header-btn {
@@ -135,6 +137,22 @@ body {
   transition: background 0.2s;
 }
 .header-btn:hover {
+  background: #f5f5f5;
+}
+.header-btn-logged-in {
+  font-size: 0.95rem;
+  padding: 4px 16px;
+  border: 2px solid #222;
+  border-radius: 6px;
+  background: #fff;
+  color: #222;
+  font-weight: bold;
+  text-decoration: none;
+  width: 100px;
+  text-align: center;
+  transition: background 0.2s;
+}
+.header-btn-logged-in:hover {
   background: #f5f5f5;
 }
 .login-container {
