@@ -10,6 +10,21 @@
 
     <%= yield :head %>
 
+    <%# Google Analytics 4 %>
+    <% if ENV['GA4_MEASUREMENT_ID'].present? || Rails.env.production? %>
+      <!-- Google tag (gtag.js) -->
+      <script async src="https://www.googletagmanager.com/gtag/js?id=G-Q3K71C4CTD"></script>
+      <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag(){dataLayer.push(arguments);}
+        gtag('js', new Date());
+        gtag('config', 'G-Q3K71C4CTD');
+        <% if Rails.env.development? %>
+        console.log('Google Analytics loaded in development mode with ID: G-Q3K71C4CTD');
+        <% end %>
+      </script>
+    <% end %>
+
     <%# Enable PWA manifest for installable apps (make sure to enable in config/routes.rb too!) %>
     <%#= tag.link rel: "manifest", href: pwa_manifest_path(format: :json) %>
 

@@ -85,6 +85,24 @@ cd edimego
 cp .env.example .env
 ```
 
+### Google Analytics 4 (GA4) の設定
+
+Google Analytics 4を利用する場合は、以下の手順で設定してください：
+
+1. Google Analytics 4で新しいプロパティを作成し、測定IDを取得
+2. 環境変数に測定IDを設定：
+```bash
+# 本番環境・開発環境共通
+export GA4_MEASUREMENT_ID="G-Q3K71C4CTD"
+```
+
+3. 本番環境では、デプロイ先の環境変数設定で`GA4_MEASUREMENT_ID`を設定してください
+
+**注意**: 
+- 測定IDは`G-`で始まる文字列です
+- 開発環境でも設定することで、ローカルでのテストが可能です
+- 環境変数が設定されていない場合、Google Analyticsは読み込まれません
+
 3. Dockerコンテナの起動
 ```bash
 docker-compose up -d
