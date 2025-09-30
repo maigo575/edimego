@@ -63,5 +63,12 @@
       <div class="flash-message <%= key %>"><%= value %></div>
     <% end %>
     <%= yield %>
+    
+    <div class="footer">
+      <div class="footer-links">
+        <%= link_to "利用規約", terms_of_service_path, class: "footer-link" %>
+        <%= link_to "プライバシーポリシー", privacy_policy_path, class: "footer-link" %>
+      </div>
+    </div>
   </body>
 </html>
