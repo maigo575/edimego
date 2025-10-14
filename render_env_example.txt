@@ -1,0 +1,19 @@
+# Render環境変数設定例
+# RenderダッシュボードのEnvironment Variablesで設定してください
+
+# Rails設定
+RAILS_ENV=production
+RAILS_MASTER_KEY=your_rails_master_key_here
+
+# データベース（Render PostgreSQL自動設定）
+# DATABASE_URL は Render が自動で設定します
+
+# Gmail SMTP設定
+GMAIL_USERNAME=nagaragaki@gmail.com
+GMAIL_APP_PASSWORD=xqkp ojgo mlss jduw
+MAILER_SENDER=no-reply@xn--v8jc9fuf1610a.com
+MAILER_HOST=your-render-app.onrender.com
+MAILER_DOMAIN=xn--v8jc9fuf1610a.com
+
+# その他の設定
+SECRET_KEY_BASE=your_secret_key_base_here

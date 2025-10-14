@@ -1,0 +1,17 @@
+# メール送信設定（Gmail SMTP）
+GMAIL_USERNAME=nagaragaki@gmail.com
+GMAIL_APP_PASSWORD=xqkp ojgo mlss jduw
+MAILER_SENDER=no-reply@xn--v8jc9fuf1610a.com
+MAILER_HOST=xn--v8jc9fuf1610a.com
+MAILER_DOMAIN=xn--v8jc9fuf1610a.com
+
+# メール送信設定（Brevo - 代替案）
+BREVO_SMTP_USERNAME=97a1e2001@smtp-brevo.com
+BREVO_SMTP_PASSWORD=z3YGKE7AQrF5UgB4
+
+# データベース設定（本番環境）
+DATABASE_URL=postgresql://username:password@localhost/sotsugyo_seisaku_production
+
+# Rails設定
+RAILS_MASTER_KEY=your_rails_master_key_here
+SECRET_KEY_BASE=your_secret_key_base_here

@@ -1,0 +1,68 @@
+<div class="container mt-5">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">
+          <h3 class="mb-0">📧 メール送信テスト</h3>
+          <small class="text-muted"><%= @mailer_config[:provider] %>のメール送信機能をテストします</small>
+        </div>
+        <div class="card-body">
+          <% if notice %>
+            <div class="alert alert-success" role="alert">
+              ✅ <%= notice %>
+            </div>
+          <% end %>
+
+          <% if alert %>
+            <div class="alert alert-danger" role="alert">
+              ❌ <%= alert %>
+            </div>
+          <% end %>
+
+          <%= form_with url: test_mails_path, method: :post, local: true do |form| %>
+            <div class="mb-3">
+              <%= form.label :email, "送信先メールアドレス", class: "form-label" %>
+              <%= form.email_field :email, class: "form-control", 
+                  value: current_user.email, 
+                  placeholder: "test@example.com", required: true %>
+              <div class="form-text">テスト用のメールアドレスを入力してください</div>
+            </div>
+
+            <div class="mb-3">
+              <%= form.label :subject, "件名", class: "form-label" %>
+              <%= form.text_field :subject, class: "form-control", 
+                  placeholder: "テストメールの件名", required: true %>
+            </div>
+
+            <div class="mb-3">
+              <%= form.label :message, "メッセージ", class: "form-label" %>
+              <%= form.text_area :message, class: "form-control", rows: 5,
+                  placeholder: "テストメッセージを入力してください", required: true %>
+            </div>
+
+            <div class="d-grid gap-2">
+              <%= form.submit "テストメールを送信", class: "btn btn-primary btn-lg" %>
+            </div>
+          <% end %>
+
+          <hr class="my-4">
+          
+          <div class="alert alert-info">
+            <h5>🔧 設定確認</h5>
+            <ul class="mb-0">
+              <li><strong>プロバイダー:</strong> <%= @mailer_config[:provider] %></li>
+              <li><strong>送信元:</strong> <%= @mailer_config[:sender] %></li>
+              <li><strong>SMTPサーバー:</strong> <%= @mailer_config[:server] %></li>
+              <li><strong>ポート:</strong> <%= @mailer_config[:port] %></li>
+              <li><strong>認証:</strong> <%= @mailer_config[:auth_status] %></li>
+            </ul>
+          </div>
+
+          <div class="mt-3">
+            <%= link_to "マイページに戻る", mypage_path, class: "btn btn-secondary" %>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
