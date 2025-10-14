@@ -11,7 +11,7 @@ module SotsugyoSeisaku
   class Application < Rails::Application
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 8.0
-    config.hosts << 'xn--v8jc9fuf1610a.com'
+    config.hosts << "xn--v8jc9fuf1610a.com"
 
     # Please, add to the `ignore` list any other `lib` subdirectories that do
     # not contain `.rb` files, or that should not be reloaded or eager loaded.
@@ -27,7 +27,7 @@ module SotsugyoSeisaku
     # config.eager_load_paths << Rails.root.join("extras")
 
     config.i18n.default_locale = :ja
-    config.i18n.load_path += Dir[Rails.root.join('config', 'locales', '**', '*.{rb,yml}').to_s]
-    config.i18n.fallbacks = [:ja]
+    config.i18n.load_path += Dir[Rails.root.join("config", "locales", "**", "*.{rb,yml}").to_s]
+    config.i18n.fallbacks = [ :ja ]
   end
 end

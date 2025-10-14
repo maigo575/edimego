@@ -2,7 +2,7 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.configure do
   # Settings specified here will take precedence over those in config/application.rb.
-  
+
   config.file_watcher = ActiveSupport::EventedFileUpdateChecker
 
   # Make code changes take effect immediately without server restart.
@@ -35,35 +35,35 @@ Rails.application.configure do
 
   # Don't care if the mailer can't send.
   config.action_mailer.raise_delivery_errors = true
-  
+
   # Gmail SMTPを使用（2段階認証設定済み）
-  if ENV['GMAIL_USERNAME'].present?
+  if ENV["GMAIL_USERNAME"].present?
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
-      address: 'smtp.gmail.com',
+      address: "smtp.gmail.com",
       port: 587,
-      domain: 'gmail.com',
-      user_name: ENV.fetch('GMAIL_USERNAME'),
-      password: ENV.fetch('GMAIL_APP_PASSWORD'),
-      authentication: 'plain',
+      domain: "gmail.com",
+      user_name: ENV.fetch("GMAIL_USERNAME"),
+      password: ENV.fetch("GMAIL_APP_PASSWORD"),
+      authentication: "plain",
       enable_starttls_auto: true
     }
   # BrevoのSMTPを使用（ドメイン認証なしでもテスト）
-  elsif ENV['BREVO_SMTP_USERNAME'].present?
+  elsif ENV["BREVO_SMTP_USERNAME"].present?
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
-      address: 'smtp-relay.brevo.com',
+      address: "smtp-relay.brevo.com",
       port: 587,
-      domain: ENV.fetch('MAILER_DOMAIN', 'xn--v8jc9fuf1610a.com'),
-      user_name: ENV.fetch('BREVO_SMTP_USERNAME'),
-      password: ENV.fetch('BREVO_SMTP_PASSWORD'),
-      authentication: 'plain',
+      domain: ENV.fetch("MAILER_DOMAIN", "xn--v8jc9fuf1610a.com"),
+      user_name: ENV.fetch("BREVO_SMTP_USERNAME"),
+      password: ENV.fetch("BREVO_SMTP_PASSWORD"),
+      authentication: "plain",
       enable_starttls_auto: true
     }
   else
     config.action_mailer.delivery_method = :letter_opener
   end
-  
+
   config.action_mailer.perform_deliveries = true
 
   # 開発環境ではメール確認をスキップ

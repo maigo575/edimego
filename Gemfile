@@ -65,12 +65,12 @@ group :test do
   gem "selenium-webdriver"
 end
 
-gem 'devise'
+gem "devise"
 
-gem 'devise-i18n', '~> 1.11'
+gem "devise-i18n", "~> 1.11"
 
-gem 'rails-i18n', '>= 8.0.0'
+gem "rails-i18n", ">= 8.0.0"
 
 # メール送信用（Brevo用）
 # gem 'sendgrid-ruby'  # SendGridの場合
-gem 'brevo'  # Brevoの場合
+gem "brevo"  # Brevoの場合

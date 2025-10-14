@@ -83,35 +83,35 @@ Rails.application.configure do
   config.action_mailer.perform_deliveries = true
 
   # Gmail SMTP設定（本番環境）
-  if ENV['GMAIL_USERNAME'].present?
+  if ENV["GMAIL_USERNAME"].present?
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
-      address: 'smtp.gmail.com',
+      address: "smtp.gmail.com",
       port: 587,
-      domain: ENV.fetch('MAILER_DOMAIN', 'xn--v8jc9fuf1610a.com'),
-      user_name: ENV.fetch('GMAIL_USERNAME'),
-      password: ENV.fetch('GMAIL_APP_PASSWORD'),
-      authentication: 'plain',
+      domain: ENV.fetch("MAILER_DOMAIN", "xn--v8jc9fuf1610a.com"),
+      user_name: ENV.fetch("GMAIL_USERNAME"),
+      password: ENV.fetch("GMAIL_APP_PASSWORD"),
+      authentication: "plain",
       enable_starttls_auto: true
     }
   else
     # Brevo設定（代替案）
     config.action_mailer.delivery_method = :smtp
     config.action_mailer.smtp_settings = {
-      address: 'smtp-relay.brevo.com',
+      address: "smtp-relay.brevo.com",
       port: 587,
-      domain: ENV.fetch('MAILER_DOMAIN', 'xn--v8jc9fuf1610a.com'),
-      user_name: ENV.fetch('BREVO_SMTP_USERNAME', ''),
-      password: ENV.fetch('BREVO_SMTP_PASSWORD', ''),
-      authentication: 'plain',
+      domain: ENV.fetch("MAILER_DOMAIN", "xn--v8jc9fuf1610a.com"),
+      user_name: ENV.fetch("BREVO_SMTP_USERNAME", ""),
+      password: ENV.fetch("BREVO_SMTP_PASSWORD", ""),
+      authentication: "plain",
       enable_starttls_auto: true
     }
   end
 
   # Set localhost to be used by links generated in mailer templates.
-  config.action_mailer.default_url_options = { 
-    host: ENV.fetch('MAILER_HOST', 'localhost'),
-    protocol: 'https'
+  config.action_mailer.default_url_options = {
+    host: ENV.fetch("MAILER_HOST", "localhost"),
+    protocol: "https"
   }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
@@ -126,12 +126,12 @@ Rails.application.configure do
 
   # Enable DNS rebinding protection and other Next.js features.
   # 許可するホストを設定
-  config.host_authorization = { 
-    exclude: ->(request) { 
-      request.path.start_with?("/health") || 
+  config.host_authorization = {
+    exclude: ->(request) {
+      request.path.start_with?("/health") ||
       request.host.match?(/xn--v8jc9fuf1610a\.com/) ||
       request.host.match?(/nagarashu-ki\.onrender\.com/) ||
       request.host.match?(/localhost/)
-    } 
+    }
   }
 end
