@@ -1,38 +1,61 @@
-<div style="display: flex; flex-direction: column; align-items: center; margin-top: 40px;">
+<div class="mypage-container">
   <!-- ペンネーム -->
-  <div style="font-size: 2rem; font-weight: bold; margin-bottom: 40px;">
+  <div class="penname-display">
     <%= @user.penname.presence || 'ペンネーム未設定' %>
   </div>
 
-  <!-- 作品一覧ボタン -->
-  <%= link_to '作品一覧', works_path, class: 'mypage-btn', style: 'font-size: 1.5rem; margin-bottom: 16px; text-decoration: none; color: #222; font-weight: bold;' %>
-
-  <!-- プロフィール変更ボタン -->
-  <%= link_to 'プロフィール変更', edit_profile_path, class: 'mypage-btn', style: 'font-size: 1.5rem; margin-bottom: 16px; text-decoration: none; color: #222; font-weight: bold;' %>
-
-  <!-- メールアドレス変更ボタン -->
-  <%= link_to 'メールアドレス変更', edit_email_change_path, class: 'mypage-btn', style: 'font-size: 1.5rem; margin-bottom: 16px; text-decoration: none; color: #222; font-weight: bold;' %>
-
-  <!-- パスワード変更ボタン -->
-  <%= link_to 'パスワード変更', edit_password_change_path, class: 'mypage-btn', style: 'font-size: 1.5rem; margin-bottom: 16px; text-decoration: none; color: #222; font-weight: bold;' %>
-
-  <!-- メール送信テストボタン -->
-  <%= link_to '📧 メール送信テスト', new_test_mail_path, class: 'mypage-btn', style: 'font-size: 1.5rem; margin-bottom: 32px; text-decoration: none; color: #222; font-weight: bold;' %>
+  <!-- メイン機能ボタン -->
+  <div class="main-buttons">
+    <%= link_to '作品一覧', works_path, class: 'main-btn' %>
+    <%= link_to 'プロフィール変更', edit_profile_path, class: 'main-btn' %>
+  </div>
 </div>
 
 <style>
-  .mypage-btn {
+  .mypage-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 40px;
+    padding: 0 20px;
+  }
+
+  .penname-display {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-bottom: 40px;
+    text-align: center;
+  }
+
+  .main-buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    align-items: center;
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .main-btn {
     display: block;
-    width: 260px;
-    padding: 12px 0;
-    border: none;
+    width: 100%;
+    padding: 16px 24px;
+    border: 2px solid #333;
     background: #fff;
     border-radius: 8px;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
     text-align: center;
-    transition: background 0.2s;
+    text-decoration: none;
+    color: #333;
+    font-size: 1.2rem;
+    font-weight: bold;
+    transition: all 0.2s;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.1);
   }
-  .mypage-btn:hover {
-    background: #f0f0f0;
+
+  .main-btn:hover {
+    background: #333;
+    color: #fff;
+    transform: translateY(-1px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.15);
   }
 </style> 
