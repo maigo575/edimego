@@ -123,9 +123,36 @@ docker-compose exec web rails server -b '0.0.0.0'
 ```
 
 ## テストの実行
+
+### ローカル環境でのテスト実行
 ```bash
 docker-compose exec web rails test
 ```
+
+### CI（GitHub Actions）でのテスト実行
+このプロジェクトでは、GitHub Actionsを使用してCI（継続的インテグレーション）を設定しています。
+
+#### CI設定の詳細
+- **トリガー**: プッシュやプルリクエスト時に自動実行
+- **対象ブランチ**: main, master
+- **実行内容**:
+  - Ruby 3.3.0でのテスト実行
+  - PostgreSQL 15でのデータベーステスト
+  - RuboCopによる静的解析
+  - Brakemanによるセキュリティチェック
+  - Minitestによるユニットテスト
+  - Capybaraによるシステムテスト
+
+#### CI設定ファイル
+- `.github/workflows/ci.yml` - GitHub Actionsのワークフロー設定
+
+#### CIの確認方法
+1. GitHubリポジトリの「Actions」タブで実行状況を確認
+2. プッシュやプルリクエスト時に自動でテストが実行される
+3. テストが失敗した場合は、マージ前に修正が必要
+
+#### ブランチプロテクション
+必要に応じて、GitHubリポジトリの設定でブランチプロテクションを有効にし、CIが成功するまでマージを防ぐことができます。
 
 ## デプロイ
 ```bash
