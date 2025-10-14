@@ -18,6 +18,15 @@
             </div>
           <% end %>
 
+          <div class="alert alert-info" role="alert">
+            <h5>パスワード変更手順</h5>
+            <ol>
+              <li>メールアドレスを入力してください</li>
+              <li>パスワード変更用のリンクをメールで送信します</li>
+              <li>メール内のリンクから新しいパスワードを設定してください</li>
+            </ol>
+          </div>
+
           <%= form_with(model: @user, url: update_password_change_path, method: :patch, local: true) do |form| %>
             <% if @user.errors.any? %>
               <div class="alert alert-danger" role="alert">
@@ -31,23 +40,13 @@
             <% end %>
 
             <div class="mb-3">
-              <%= form.label :current_password, "現在のパスワード", class: "form-label" %>
-              <%= form.password_field :current_password, class: "form-control", required: true %>
-            </div>
-
-            <div class="mb-3">
-              <%= form.label :password, "新しいパスワード", class: "form-label" %>
-              <%= form.password_field :password, class: "form-control", required: true %>
-              <div class="form-text">最低6文字以上で入力してください。</div>
-            </div>
-
-            <div class="mb-3">
-              <%= form.label :password_confirmation, "新しいパスワード（確認）", class: "form-label" %>
-              <%= form.password_field :password_confirmation, class: "form-control", required: true %>
+              <%= form.label :email, "メールアドレス", class: "form-label" %>
+              <%= form.email_field :email, value: current_user.email, class: "form-control", required: true, readonly: true %>
+              <div class="form-text">登録済みのメールアドレスにパスワード変更リンクを送信します</div>
             </div>
 
             <div class="d-grid gap-2">
-              <%= form.submit "パスワードを変更する", class: "btn btn-primary" %>
+              <%= form.submit "パスワード変更メールを送信", class: "btn btn-primary" %>
             </div>
           <% end %>
 

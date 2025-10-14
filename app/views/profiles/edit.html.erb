@@ -18,17 +18,6 @@
         <%= f.text_field :penname, required: true, class: 'form-input' %>
       </div>
 
-      <div class="form-field">
-        <label for="user_email">メールアドレス</label>
-        <%= f.email_field :email, required: true, class: 'form-input' %>
-        <% if @user.respond_to?(:unconfirmed_email) && @user.unconfirmed_email.present? %>
-          <div class="unconfirmed-notice">
-            確認待ちの新しいメールアドレス: <strong><%= @user.unconfirmed_email %></strong><br>
-            メール内のリンクから変更を確定してください。
-          </div>
-        <% end %>
-      </div>
-
       <div class="form-actions">
         <%= f.submit '更新する', class: 'submit-btn' %>
       </div>
@@ -41,7 +30,6 @@
     <div class="settings-buttons">
       <%= link_to 'メールアドレス変更', edit_email_change_path, class: 'settings-btn' %>
       <%= link_to 'パスワード変更', edit_password_change_path, class: 'settings-btn' %>
-      <%= link_to '📧 メール送信テスト', new_test_mail_path, class: 'settings-btn' %>
     </div>
   </div>
 </div>
@@ -123,13 +111,13 @@
   }
 
   .submit-btn {
-    padding: 12px 32px;
-    font-size: 1.1rem;
-    border-radius: 8px;
+    padding: 8px 20px;
+    font-size: 0.95rem;
+    border-radius: 6px;
     border: none;
     background: #333;
     color: #fff;
-    font-weight: bold;
+    font-weight: normal;
     cursor: pointer;
     transition: background 0.2s;
   }
