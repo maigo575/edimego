@@ -125,5 +125,13 @@ Rails.application.configure do
   config.active_record.dump_schema_after_migration = false
 
   # Enable DNS rebinding protection and other Next.js features.
-  # config.host_authorization = { exclude: ->(request) { request.path.start_with?("/health") } }
+  # 許可するホストを設定
+  config.host_authorization = { 
+    exclude: ->(request) { 
+      request.path.start_with?("/health") || 
+      request.host.match?(/xn--v8jc9fuf1610a\.com/) ||
+      request.host.match?(/nagarashu-ki\.onrender\.com/) ||
+      request.host.match?(/localhost/)
+    } 
+  }
 end
