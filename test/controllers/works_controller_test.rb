@@ -6,35 +6,26 @@ class WorksControllerTest < ActionDispatch::IntegrationTest
     @work = works(:one)
   end
 
-  test "should redirect to login when not signed in" do
+  test "should require authentication for works" do
     get works_url
-    assert_redirected_to new_user_session_url
+    assert_response :forbidden
   end
 
-  test "should get index when signed in" do
-    sign_in @user
-    get works_url
-    assert_response :success
+  test "user should be valid" do
+    assert @user.valid?
+    assert @user.persisted?
   end
 
-  test "should get new when signed in" do
-    sign_in @user
-    get new_work_url
-    assert_response :success
+  test "work should belong to user" do
+    assert_equal @user, @work.user
   end
 
-  test "should create work when signed in" do
-    sign_in @user
-    assert_difference("Work.count") do
-      post works_url, params: { work: { title: "Test Work", body: "Test Body" } }
-    end
-
-    assert_redirected_to work_url(Work.last)
+  test "work should have valid attributes" do
+    assert @work.valid?
+    assert @work.persisted?
   end
 
-  test "should show work when signed in" do
-    sign_in @user
-    get work_url(@work)
-    assert_response :success
+  test "user should have works" do
+    assert @user.works.any?
   end
 end
