@@ -7,12 +7,10 @@
   <div style="margin-top: 8px;">
     <% @works.each do |work| %>
       <div style="margin-bottom: 24px;">
-        <%= link_to work_path(work), style: 'color: #20b2aa; font-size: 1.2em; text-decoration: none; display: flex; align-items: center;' do %>
-          <span style="margin-right: 16px;">
-            <%= work.title.presence || '無題' %>
-            （<%= work.updated_at.strftime('%y/%m/%d %H:%M:%S') %>更新）
-          </span>
-          <span><%= work.body&.length || 0 %>文字</span>
+        <%= link_to work_path(work), style: 'color: #20b2aa; font-size: 1.2em; text-decoration: none; display: block;' do %>
+          <%= work.title.presence || '無題' %>
+          （<%= work.updated_at.strftime('%y/%m/%d %H:%M:%S') %>更新）
+          <%= work.body&.length || 0 %>文字
         <% end %>
       </div>
     <% end %>
