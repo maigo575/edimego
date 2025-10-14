@@ -1,8 +1,4 @@
 Rails.application.routes.draw do
-  get "works/index"
-  get "works/show"
-  get "works/new"
-  get "works/create"
   devise_for :users, sign_out_via: :delete
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

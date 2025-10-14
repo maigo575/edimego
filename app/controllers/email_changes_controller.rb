@@ -24,6 +24,6 @@ class EmailChangesController < ApplicationController
   private
   
   def email_change_params
-    params.require(:user).permit(:email, :password)
+    params.require(:user).permit(:email, :current_password)
   end
 end
