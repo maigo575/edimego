@@ -13,6 +13,16 @@ class CustomDeviseMailer < Devise::Mailer
          template_name: 'confirmation_instructions')
   end
 
+  # パスワードリセットメールをカスタマイズ
+  def reset_password_instructions(record, token, opts = {})
+    @token = token
+    @user = record
+    
+    mail(to: @user.email, 
+         subject: 'パスワード変更のご案内',
+         template_name: 'reset_password_instructions')
+  end
+
   # パスワード変更通知メールをカスタマイズ
   def password_change(record, opts = {})
     @user = record

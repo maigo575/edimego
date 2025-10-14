@@ -27,21 +27,10 @@
             </ol>
           </div>
 
-          <%= form_with(model: @user, url: update_password_change_path, method: :patch, local: true) do |form| %>
-            <% if @user.errors.any? %>
-              <div class="alert alert-danger" role="alert">
-                <h4><%= pluralize(@user.errors.count, "error") %> prohibited this user from being saved:</h4>
-                <ul class="mb-0">
-                  <% @user.errors.full_messages.each do |message| %>
-                    <li><%= message %></li>
-                  <% end %>
-                </ul>
-              </div>
-            <% end %>
-
+          <%= form_with url: update_password_change_path, method: :patch, local: true do |form| %>
             <div class="mb-3">
-              <%= form.label :email, "メールアドレス", class: "form-label" %>
-              <%= form.email_field :email, value: current_user.email, class: "form-control", required: true, readonly: true %>
+              <label for="email" class="form-label">メールアドレス</label>
+              <input type="email" id="email" name="email" value="<%= current_user.email %>" class="form-control" required readonly />
               <div class="form-text">登録済みのメールアドレスにパスワード変更リンクを送信します</div>
             </div>
 
